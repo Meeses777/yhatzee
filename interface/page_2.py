@@ -304,6 +304,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if sender == self.btn_smstr and lgstr == True:
             smstr = True
             lgstr = False
+            
+        if sender == self.btn_lgstr and smstr == True:
+            smstr = False
         
         if smstr == True or lgstr == True:           
             if self.current_player == "p1":
