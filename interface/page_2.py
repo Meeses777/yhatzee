@@ -100,7 +100,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.btn_roll.setText("Roll Selected")
                 self.re_rolled += 1
             else:
-                if len(self.selected_dice) == 0:
+                if len(self.selected_dice) == 0 and str(self.sender().text()) == "Roll Selected":
                     self.message_box("No dice selected","Error")
                 else:
                     for i in range(len(self.selected_dice)):
@@ -222,7 +222,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def btn_sixes_a(self):
         self.num_score_btns(6)
     
-    def same_kind_a(self, num):
+    def same_kind_a(self, num, sender):
         numbers = [0,0,0,0,0]
         str_3 = False
         str_4 = False
@@ -235,6 +235,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             str_3 = True
         if all(num in numbers for num in [4]) == True:
             str_4 = True
+        
+        if sender == self.btn_4same and str_3 == True:
+            str_3 = False
+            
+        if sender == self.btn_3same and str_4 == True:
+            str_4 = False
+            str_3 = True
         
         if str_3 == True or str_4 == True:
             if self.current_player == "p1":
@@ -262,10 +269,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     
     def btn_3same_a(self):
-        self.same_kind_a(3)
+        self.same_kind_a(3, self.sender())
         
     def btn_4same_a(self):
-        self.same_kind_a(4)
+        self.same_kind_a(4, self.sender())
     
     def btn_fullhouse_a(self):
         numbers = [0,0,0,0,0]
