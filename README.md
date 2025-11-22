@@ -5,8 +5,11 @@ Please see program's "View Instructions" page for details on rules.
 AUTHOR:
 Oliver Osmond
 
-INSTALLATION:
-As this is a Python based game, please ensure you have a working python interpreter before running this game. 
+REQUIREMENTS:
+Python 3.8+
+PySide6>=6
+
+INSTALLATION: 
 Step 1: Please clone from https://github.com/meeses-o/yhatzee_gui.git
 Step 2: Create and activate a working venv:
 
